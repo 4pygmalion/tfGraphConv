@@ -11,10 +11,12 @@ class GraphConvolution(tf.keras.layers.Layer):
 
 
     def _get_A_from_graph(self, edge, weight):
+        # stellargraph
         return A
 
     def _get_degree_matrix(self, A):
-        return inv_D
+        '''Element-wise inverse. D^{-1}'''
+        return tf.math.reciprocal(inv_D)
 
     def build(self, input_shapes):
         self.kernel = self.add_weight(shape=(None, output_dim), name='W', initializer=self.kernel_intializer)
